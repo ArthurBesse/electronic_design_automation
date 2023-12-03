@@ -1,4 +1,4 @@
-#include "Simulator.h"
+#include <libcircuit/Simulator.h>
 #pragma region Generic Simulator
 GenericSimulator::Iterator::Iterator(const size_t count, const bool value) : m_bits(count, value)
 {
@@ -122,15 +122,16 @@ bool FuzzSimulator::Iterator::operator[](const size_t index) const noexcept
 
 
 FuzzSimulator::FuzzSimulator(const size_t count)
+  : m_count(count)
 {
 }
 
 FuzzSimulator::Iterator FuzzSimulator::begin() const
 {
-	return FuzzSimulator::Iterator();
+	return Iterator(0, false);
 }
 
 FuzzSimulator::Iterator FuzzSimulator::end() const
 {
-	return FuzzSimulator::Iterator();
+	return Iterator(0, false);
 }

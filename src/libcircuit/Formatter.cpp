@@ -1,15 +1,14 @@
-#include "Formatter.h"
-#include "Formatter.h"
-#include "Formatter.h"
 #include <iomanip>
 #include <ios>
 
-#include "Formatter.h"
+#include <libcircuit/Formatter.h>
 
 namespace circuit
 {
     Formatter::Formatter(Graph const& g, std::ostream* out_stream)
         : m_out_stream(out_stream)
+        , m_current_raw(0)
+        , m_current_column(0)
     {
         std::ranges::copy(g.get_inputs() | std::ranges::views::keys, std::back_inserter(this->m_inputs));
         std::ranges::copy(g.get_outputs() | std::ranges::views::keys, std::back_inserter(this->m_outputs));
@@ -43,8 +42,6 @@ namespace circuit
 
     Tester::Tester(Graph const& g, std::ostream* out_stream)
         : Formatter(g, out_stream)
-        , m_current_raw(0)
-        , m_current_column(0)
     {
     }
 
@@ -65,8 +62,6 @@ namespace circuit
     TablePrinter::TablePrinter(Graph const& g, std::ostream* out_stream)
         : Formatter(g, out_stream)
         , m_separator("|")
-        , m_current_raw(0)
-        , m_current_column(0)
         , m_table_width(1)
     {
         for (auto const& c : this->m_inputs)

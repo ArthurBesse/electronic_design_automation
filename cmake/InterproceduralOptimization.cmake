@@ -1,4 +1,4 @@
-macro(myproject_enable_ipo)
+macro(electronic_design_automation_enable_ipo)
   include(CheckIPOSupported)
   check_ipo_supported(RESULT result OUTPUT output)
   if(result)

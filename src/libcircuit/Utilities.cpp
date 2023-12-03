@@ -1,4 +1,4 @@
-#include "Utilities.h"
+#include <libcircuit/Utilities.h>
 
 namespace circuit::helper
 {

@@ -1,6 +1,6 @@
 #include <catch2/catch_test_macros.hpp>
 
-#include <myproject/sample_library.hpp>
+#include <electronic_design_automation/libcircuit.hpp>
 
 TEST_CASE("Factorials are computed with constexpr", "[factorial]")
 {

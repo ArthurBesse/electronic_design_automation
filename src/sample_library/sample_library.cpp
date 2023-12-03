@@ -1,4 +1,4 @@
-#include <myproject/sample_library.hpp>
+#include <electronic_design_automation/libcircuit.hpp>
 
 int factorial(int input) noexcept
 {

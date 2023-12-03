@@ -43,7 +43,7 @@ public:
 class Output final : public Node
 {
 	Node* m_input = nullptr;
-	void add_sink(Node* sink) noexcept override;
+	void add_sink(Node*) noexcept override;
 
 public:
 	void add_source(Node* source) noexcept;

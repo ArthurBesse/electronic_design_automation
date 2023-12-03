@@ -1,6 +1,6 @@
 #include <algorithm>
 
-#include "Node.h"
+#include <libcircuit/Node.h>
 
 void Node::add_sink(Node* sink) noexcept
 {
@@ -15,10 +15,8 @@ bool const& Node::get_result() const noexcept
 #pragma region Passthrough node imlementation
 void Passthrough::add_source(Node* source) noexcept
 {
-	if (m_input != nullptr)
-		throw std::exception("00");
-	this->m_input = source;
-	source->add_sink(this);
+        this->m_input = source;
+        source->add_sink(this);
 }
 
 void Passthrough::propagate() noexcept
@@ -48,7 +46,7 @@ void Input::set_value(const bool value) noexcept
 #pragma endregion
 
 #pragma region Output node imlementation
-void Output::add_sink(Node* sink) noexcept
+void Output::add_sink(Node*) noexcept
 {
 }
 void Output::add_source(Node* source) noexcept

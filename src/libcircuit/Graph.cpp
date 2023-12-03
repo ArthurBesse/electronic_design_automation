@@ -1,7 +1,7 @@
 #include <stdexcept>
 #include <ranges>
 
-#include "Graph.h"
+#include <libcircuit/Graph.h>
 
 namespace circuit
 {

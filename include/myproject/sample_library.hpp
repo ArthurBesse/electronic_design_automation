@@ -1,9 +1,9 @@
-#ifndef SAMPLE_LIBRARY_HPP
-#define SAMPLE_LIBRARY_HPP
+#ifndef libcircuit_HPP
+#define libcircuit_HPP
 
-#include <myproject/sample_library_export.hpp>
+#include <electronic_design_automation/libcircuit_export.hpp>
 
-[[nodiscard]] SAMPLE_LIBRARY_EXPORT int factorial(int) noexcept;
+[[nodiscard]] libcircuit_EXPORT int factorial(int) noexcept;
 
 [[nodiscard]] constexpr int factorial_constexpr(int input) noexcept
 {
