@@ -14,7 +14,7 @@ macro(electronic_design_automation_supports_sanitizers)
   if((CMAKE_CXX_COMPILER_ID MATCHES ".*Clang.*" OR CMAKE_CXX_COMPILER_ID MATCHES ".*GNU.*") AND WIN32)
     set(SUPPORTS_ASAN OFF)
   else()
-    set(SUPPORTS_ASAN ON)
+    set(SUPPORTS_ASAN OFF)
   endif()
 endmacro()
 

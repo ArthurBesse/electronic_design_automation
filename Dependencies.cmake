@@ -9,7 +9,7 @@ function(electronic_design_automation_setup_dependencies)
   # already been provided to us by a parent project
 
   if(NOT TARGET GTest::GTest)
-    cpmaddpackage(
+    CPMAddPackage(
 	  NAME googletest
 	  GITHUB_REPOSITORY google/googletest
 	  GIT_TAG v1.14.0
