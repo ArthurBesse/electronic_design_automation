@@ -1,1 +1,2 @@
 add_subdirectory(libcircuit)
+add_subdirectory(testexe)

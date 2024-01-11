@@ -2,7 +2,7 @@
 
 namespace circuit::helper
 {
-	full_adder_1_bit_io_t create_full_adder_1_bit(Graph& g)
+	full_adder_1_bit_io_t create_full_adder_1_bit(Graph &g)
 	{
 		const auto input_node_1 = g.add_node<Passthrough>();
 		const auto input_node_2 = g.add_node<Passthrough>();
@@ -41,10 +41,10 @@ namespace circuit::helper
 
 		output_node_1->add_source(nand_8);
 		output_node_2->add_source(nand_9);
-		return { input_node_1 , input_node_2, input_node_3, output_node_1, output_node_2 };
+		return { input_node_1, input_node_2, input_node_3, output_node_1, output_node_2 };
 	}
 
-	full_adder_8_bit_io_t create_full_adder_8_bit(Graph& g)
+	full_adder_8_bit_io_t create_full_adder_8_bit(Graph &g)
 	{
 		full_adder_8_bit_io_t result;
 
@@ -135,7 +135,7 @@ namespace circuit::helper
 		return result;
 	}
 
-	multiplexer_io_t create_multiplexer(Graph& g)
+	multiplexer_io_t create_multiplexer(Graph &g)
 	{
 		const auto input_node_i1 = g.add_node<Passthrough>();
 		const auto input_node_i2 = g.add_node<Passthrough>();
@@ -185,10 +185,16 @@ namespace circuit::helper
 		or_3->add_source2(or_2);
 		output_node->add_source(or_3);
 
-		return { input_node_i1, input_node_i2, input_node_i3, input_node_i4, input_node_m1, input_node_m2, output_node };
+		return { input_node_i1,
+			input_node_i2,
+			input_node_i3,
+			input_node_i4,
+			input_node_m1,
+			input_node_m2,
+			output_node };
 	}
 
-	arithmetic_logic_unit_1_bit_io_t create_arithmetic_logic_unit_1_bit(Graph& g)
+	arithmetic_logic_unit_1_bit_io_t create_arithmetic_logic_unit_1_bit(Graph &g)
 	{
 		auto [a, b, ci, s, co] = create_full_adder_1_bit(g);
 		auto [i0, i1, i2, i3, m0, m1, mo] = create_multiplexer(g);
@@ -212,7 +218,7 @@ namespace circuit::helper
 		return { a, b, ci, m0, m1, mo, co };
 	}
 
-	arithmetic_logic_unit_8_bit_io_t create_arithmetic_logic_unit_8_bit(Graph& g)
+	arithmetic_logic_unit_8_bit_io_t create_arithmetic_logic_unit_8_bit(Graph &g)
 	{
 		arithmetic_logic_unit_8_bit_io_t result;
 
@@ -326,7 +332,7 @@ namespace circuit::helper
 		return result;
 	}
 
-	void register_full_adder_1_bit_io_nodes(Graph& g, full_adder_1_bit_io_t const& full_adder_1_bit_io)
+	void register_full_adder_1_bit_io_nodes(Graph &g, full_adder_1_bit_io_t const &full_adder_1_bit_io)
 	{
 		g.register_input(full_adder_1_bit_io.m_input_a, "A");
 		g.register_input(full_adder_1_bit_io.m_input_b, "B");
@@ -335,7 +341,7 @@ namespace circuit::helper
 		g.register_output(full_adder_1_bit_io.m_output_c, "Cout");
 	}
 
-	void register_full_adder_8_bit_io_nodes(Graph& g, full_adder_8_bit_io_t const& full_adder_8_bit_io)
+	void register_full_adder_8_bit_io_nodes(Graph &g, full_adder_8_bit_io_t const &full_adder_8_bit_io)
 	{
 		// Input bit 0
 		g.register_input(full_adder_8_bit_io.m_input_a0, "A0");
@@ -371,7 +377,7 @@ namespace circuit::helper
 		g.register_input(full_adder_8_bit_io.m_input_a6, "A6");
 		g.register_input(full_adder_8_bit_io.m_input_b6, "B6");
 		g.register_output(full_adder_8_bit_io.m_output_s6, "S6");
-		
+
 		// Input bit 7
 		g.register_input(full_adder_8_bit_io.m_input_a7, "A7");
 		g.register_input(full_adder_8_bit_io.m_input_b7, "B7");
@@ -382,7 +388,7 @@ namespace circuit::helper
 		g.register_output(full_adder_8_bit_io.m_output_c, "Cout");
 	}
 
-	void register_multiplexer_io_nodes(Graph& g, multiplexer_io_t const& multiplexer_io)
+	void register_multiplexer_io_nodes(Graph &g, multiplexer_io_t const &multiplexer_io)
 	{
 		g.register_input(multiplexer_io.m_input_i0, "I0");
 		g.register_input(multiplexer_io.m_input_i1, "I1");
@@ -393,8 +399,8 @@ namespace circuit::helper
 		g.register_output(multiplexer_io.m_output, "Y");
 	}
 
-	void register_arithmetic_logic_unit_1_bit_io_nodes(Graph& g,
-		arithmetic_logic_unit_1_bit_io_t const& arithmetic_logic_unit_1_bit_io)
+	void register_arithmetic_logic_unit_1_bit_io_nodes(Graph &g,
+		arithmetic_logic_unit_1_bit_io_t const &arithmetic_logic_unit_1_bit_io)
 	{
 		g.register_input(arithmetic_logic_unit_1_bit_io.m_input_a, "A");
 		g.register_input(arithmetic_logic_unit_1_bit_io.m_input_b, "B");
@@ -405,8 +411,8 @@ namespace circuit::helper
 		g.register_output(arithmetic_logic_unit_1_bit_io.m_output_c, "Cout");
 	}
 
-	void register_arithmetic_logic_unit_8_bit_io_nodes(Graph& g,
-		arithmetic_logic_unit_8_bit_io_t const& arithmetic_logic_unit_8_bit_io)
+	void register_arithmetic_logic_unit_8_bit_io_nodes(Graph &g,
+		arithmetic_logic_unit_8_bit_io_t const &arithmetic_logic_unit_8_bit_io)
 	{
 		// Input bit 0
 		g.register_input(arithmetic_logic_unit_8_bit_io.m_input_a0, "A0");
@@ -454,4 +460,4 @@ namespace circuit::helper
 		g.register_input(arithmetic_logic_unit_8_bit_io.m_input_m0, "M0");
 		g.register_input(arithmetic_logic_unit_8_bit_io.m_input_m1, "M1");
 	}
-}
+}// namespace circuit::helper

@@ -3,10 +3,10 @@
 #include <ranges>
 
 #include "Graph.h"
-#include "Utilities.h"
 #include "Simulator.h"
+#include "Utilities.h"
 
-int main(int, char**)
+int main(int, char **)
 {
 	std::ofstream os("out.txt");
 	circuit::Graph g;
@@ -16,6 +16,6 @@ int main(int, char**)
 	const GenericSimulator gs(g.get_inputs().size());
 
 	circuit::simulate<circuit::Tester>(std::next(gs.begin(), 58921), std::next(gs.begin(), 58999), g, std::cout);
-	
+
 	return 0;
 }

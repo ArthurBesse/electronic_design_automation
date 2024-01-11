@@ -2,12 +2,13 @@ include(GenerateExportHeader)
 
 
 add_library(libcircuit 
-  ArithmeticLogicUnit.cpp
+  
   Formatter.cpp
   Graph.cpp
   Node.cpp
-  Simulator.cpp
-  Utilities.cpp)
+  Generator.cpp
+  Utilities.cpp 
+  Simulator.cpp)
 
 
 
